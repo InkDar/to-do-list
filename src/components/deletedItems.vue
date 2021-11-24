@@ -1,9 +1,10 @@
 <template>
   <div>
     <span>{{ toDoItem.title }}</span>
-    <span>{{ toDoItem.deleted }}</span>
-    <button @click="deleteItem()">Delete</button>
+    <br>
+    <button @click="restoreItem()">Restore</button>
   </div>
+  <!-- v-if="toDoItem.deleted" -->
 </template>
 
 <script lang="ts">
@@ -11,7 +12,7 @@ import ToDoItem from "@/types/toDoItem";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "ToDoItem",
+  name: "deletedItems",
   props: {
     toDoItem: {
       required: true,
@@ -19,13 +20,7 @@ export default defineComponent({
     },
   },
   methods: {
-    changeStatus() {
-      this.toDoItem.changeStatus();
-    },
-    deleteItem() {
-      this.toDoItem.deleteItem();
-    },
-    restoreItem() {
+    restoreItem(): void {
       this.toDoItem.restoreItem();
     },
   },
